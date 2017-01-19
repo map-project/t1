@@ -7,7 +7,7 @@
 <link href='https://api.mapbox.com/mapbox.js/v3.0.1/mapbox.css' rel='stylesheet' />
   <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-hash/v0.2.1/leaflet-hash.js'></script>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
-	<script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
+	
 <style>
   body { margin:0; padding:0; }
   #map { position:absolute; top:0; bottom:0; width:100%; }
@@ -38,11 +38,7 @@ L.mapbox.accessToken = 'pk.eyJ1Ijoib3BlbnN0cmVldG1hcCIsImEiOiJhNVlHd29ZIn0.ti6wA
     L.control.layers(baseLayers, overlayMaps, {
         position: 'topleft',
     }).addTo(map);
-  var marker = L.marker([23, 80]).addTo(map);
-
-marker.bindPopup($('<a href="#" class="speciallink">TestLink</a>').click(function() {
-    alert("test");
-})[0]);
+ 
   
   
   var LeafIcon = L.Icon.extend({
