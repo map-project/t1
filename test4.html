@@ -14,11 +14,13 @@
 <body>
 
 <div id='map'></div>
-var mymap=L.map('map_canvas',{dragging:false}).setView([25.6,85.1167],6);
+<script>
+  var mymap=L.map('map_canvas',{dragging:false}).setView([25.6,85.1167],6);
 L.tileLayer('//maps.whatismyipaddress.info/tiles/osm/{z}/{x}/{y}.png',{attribution: '&copy; OpenStreetMap <a href="//www.openstreetmap.org/copyright">Terms</a>',maxZoom:6}).addTo(mymap);
 var rIcon = L.icon({iconUrl:'//cdn.whatismyipaddress.info/images/marker_sq.png',iconSize:[16, 16],iconAnchor:[8, 12],popupAnchor:[1, -13]});
 L.marker([25.6,85.1167], {icon: rIcon}).addTo(mymap).bindPopup('Click for more details<br>about <b>47.29.83.99</b>').openPopup();
-</script>
+
+  </script>
 
 </body>
 </html>
