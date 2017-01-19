@@ -37,8 +37,18 @@ L.mapbox.accessToken = 'pk.eyJ1Ijoib3BlbnN0cmVldG1hcCIsImEiOiJhNVlHd29ZIn0.ti6wA
         position: 'topleft',
     }).addTo(map);
   
-  
-L.marker([25.6,85.1167], {icon: rIcon}).addTo(mymap).bindPopup('Click for more details<br>about <b>47.29.83.99</b>').openPopup();
+  var marker = L.marker([23, 85], {
+  icon: L.mapbox.marker.icon({
+    'marker-color': '#9c89cc'
+  })
+})
+.bindPopup('<button class="trigger">Say hi</button>')
+.addTo(map);
+//The HTML we put in bindPopup doesn't exist yet, so we can't just say
+//$('#mybutton'). Instead, we listen for click events on the map element which will bubble up from the tooltip, once it's created and someone clicks on it.
+
+$('#map').on('click', '.trigger', function() {
+alert('Hello from !');});
 </script>
 
 </body>
