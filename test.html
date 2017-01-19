@@ -6,6 +6,8 @@
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.29.0/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.29.0/mapbox-gl.css' rel='stylesheet' />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
+	<script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
     <style>
         body { margin:0; padding:0; }
         #map { position:absolute; top:0; bottom:0; width:100%; }
@@ -75,13 +77,24 @@ map.on('load', function () {
         }
     });
 });
-    
- 
-var marker = marker([23, 80]).addTo(map);
+var LeafIcon = L.Icon.extend({
+		options: {
+			shadowUrl: 'leaf-shadow.png',
+			iconSize:     [38, 95],
+			shadowSize:   [50, 64],
+			iconAnchor:   [22, 94],
+			shadowAnchor: [4, 62],
+			popupAnchor:  [-3, -76]
+		}
+	});
 
-marker.bindPopup($('<a href="#" class="speciallink">TestLink</a>').click(function() {
-    alert("test");
-})[0]);
+	var greenIcon = new LeafIcon({iconUrl: 'leaf-green.png'}),
+		redIcon = new LeafIcon({iconUrl: 'leaf-red.png'}),
+		orangeIcon = new LeafIcon({iconUrl: 'leaf-orange.png'});
+
+	L.marker([51.5, -0.09], {icon: greenIcon}).bindPopup("I am a green leaf.").addTo(map);
+	L.marker([51.495, -0.083], {icon: redIcon}).bindPopup("I am a red leaf.").addTo(map);
+	L.marker([51.49, -0.1], {icon: orangeIcon}).bindPopup("I am an orange leaf.").addTo(map);
 </script>
 
 </body>
