@@ -48,7 +48,11 @@ map.on('load', function () {
                 },
                 "properties": {
                     "title": "Amit kumar Singh",
-                    "icon": "harbor"
+                    "icon": "harbor",
+			            'marker-color': '#f86767',
+            'marker-size': 'large',
+            'marker-symbol': 'star',
+            url: 'http://en.wikipedia.org/'
                 }
             },
                          {      
@@ -77,24 +81,7 @@ map.on('load', function () {
         }
     });
 });
-var LeafIcon = L.Icon.extend({
-		options: {
-			shadowUrl: 'leaf-shadow.png',
-			iconSize:     [38, 95],
-			shadowSize:   [50, 64],
-			iconAnchor:   [22, 94],
-			shadowAnchor: [4, 62],
-			popupAnchor:  [-3, -76]
-		}
-	});
 
-	var greenIcon = new LeafIcon({iconUrl: 'leaf-green.png'}),
-		redIcon = new LeafIcon({iconUrl: 'leaf-red.png'}),
-		orangeIcon = new LeafIcon({iconUrl: 'leaf-orange.png'});
-
-	L.marker([23, 80], {icon: greenIcon}).bindPopup("I am a green leaf.").addTo(map);
-	L.marker([51.495, -0.083], {icon: redIcon}).bindPopup("I am a red leaf.").addTo(map);
-	L.marker([51.49, -0.1], {icon: orangeIcon}).bindPopup("I am an orange leaf.").addTo(map);
 </script>
 
 </body>
