@@ -15,6 +15,7 @@
 
 <div id='map'></div>
 <script>
+  
     var southWest = L.latLng(7.319, 61.523),
         northEast = L.latLng(36.774, 100.635),
         bounds = L.latLngBounds(southWest, northEast);
@@ -35,9 +36,7 @@ L.mapbox.accessToken = 'pk.eyJ1Ijoib3BlbnN0cmVldG1hcCIsImEiOiJhNVlHd29ZIn0.ti6wA
     L.control.layers(baseLayers, overlayMaps, {
         position: 'topleft',
     }).addTo(map);
-  
-  
-  </script>
+</script>
 
 </body>
 </html>
