@@ -75,7 +75,10 @@ map.on('load', function () {
         }
     });
 });
-  var marker = L.marker([23, 80]).addTo(map);
+    
+ 
+var marker = L.marker([23, 80]).addTo(map);
+
 marker.bindPopup($('<a href="#" class="speciallink">TestLink</a>').click(function() {
     alert("test");
 })[0]);
