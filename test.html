@@ -75,6 +75,35 @@ map.on('load', function () {
         }
     });
 });
+    
+map.on('load', function () {
+    map.addSource('maine', {
+        'type': 'geojson',
+        'data': {
+            'type': 'Feature',
+            'geometry': {
+                'type': 'Polygon',
+                'coordinates': [[[86.13734351262877, 23.137451890638886],
+                    [74.96466, 23.8097],
+                    [73.03252, 24.3252],
+                    [83.06, 23.98],
+                    [86.11617, 25.68405],
+                    [82.64573401557249, 21.090083319667144],
+                   ]]
+            }
+        }
+    });
+    map.addLayer({
+        'id': 'maine',
+        'type': 'fill',
+        'source': 'maine',
+        'layout': {},
+        'paint': {
+            'fill-color': '#088',
+            'fill-opacity': 0.8
+        }
+    });
+});
 </script>
 
 </body>
