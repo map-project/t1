@@ -1,11 +1,24 @@
 <html>
-<script src='https://api.tiles.mapbox.com/mapbox.js/v2.3.0/mapbox.js'></script>
-    <link href='https://api.tiles.mapbox.com/mapbox.js/v2.3.0/mapbox.css' rel='stylesheet' />
-    <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-hash/v0.2.1/leaflet-hash.js'></script>
-<script>
+<head>
+<meta charset=utf-8 />
+<title>A simple map</title>
+<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+<script src='https://api.mapbox.com/mapbox.js/v3.0.1/mapbox.js'></script>
+<link href='https://api.mapbox.com/mapbox.js/v3.0.1/mapbox.css' rel='stylesheet' />
+  <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-hash/v0.2.1/leaflet-hash.js'></script>
+<style>
+  body { margin:0; padding:0; }
+  #map { position:absolute; top:0; bottom:0; width:100%; }
+</style>
+</head>
+<body>
+
+<div id='map'></div>
 var mymap=L.map('map_canvas',{dragging:false}).setView([25.6,85.1167],6);
 L.tileLayer('//maps.whatismyipaddress.info/tiles/osm/{z}/{x}/{y}.png',{attribution: '&copy; OpenStreetMap <a href="//www.openstreetmap.org/copyright">Terms</a>',maxZoom:6}).addTo(mymap);
 var rIcon = L.icon({iconUrl:'//cdn.whatismyipaddress.info/images/marker_sq.png',iconSize:[16, 16],iconAnchor:[8, 12],popupAnchor:[1, -13]});
 L.marker([25.6,85.1167], {icon: rIcon}).addTo(mymap).bindPopup('Click for more details<br>about <b>47.29.83.99</b>').openPopup();
 </script>
+
+</body>
 </html>
