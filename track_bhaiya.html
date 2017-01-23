@@ -53,9 +53,13 @@ map.on('load', function () {
         }
     });
 });
-    var popup = new mapboxgl.Popup({closeOnClick:true})
+    var popup1 = new mapboxgl.Popup({closeOnClick:true})
     .setLngLat([85.301286,23.327324])
     .setHTML('<p> point 1</p>')
+    .addTo(map);
+     var popup2 = new mapboxgl.Popup({closeOnClick:true})
+    .setLngLat([85.302992,23.337633])
+    .setHTML('<p> point 2</p>')
     .addTo(map);
 </script>
 
