@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <title></title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.31.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.31.0/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:100%; }
+    </style>
+</head>
+<body>
+
+<div id='map'></div>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoicnQxeXJydSIsImEiOiJjaXdoaXp5NHowMDV0MnptbTkwZTN5aXU2In0.6Lj79CTmzj-wNfoLmA-MRw';
+var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v9',
+    center: [85.301286,23.327324],
+    zoom: 13
+});
+
+map.on('load', function () {
+
+    map.addLayer({
+        "id": "route",
+        "type": "line",
+        "source": {
+            "type": "geojson",
+            "data": {
+                "type": "Feature",
+                "properties": {},
+                "geometry": {
+                    "type": "LineString",
+                    "coordinates": [
+                        [85.301286,23.327324], //start
+                        [85.304051,23.327793], // 1
+                        [85.304819,23.329401] , // 2
+                        [85.302992,23.337633] , //3
+                        [85.299386, 23.350199] , //4
+                        [85.307465,23.349769] , //5
+                        [85.307771,23.349825] //end
+                        
+                        
+                        
+                        
+                    ]
+                }
+            }
+        },
+        "layout": {
+            "line-join": "round",
+            "line-cap": "round"
+        },
+        "paint": {
+            "line-color": "#800080",
+            "line-width": 8
+        }
+    });
+});
+    var popup1 = new mapboxgl.Popup({closeOnClick:true})
+    .setLngLat([85.301286,23.327324])
+    .setHTML('<p> lat , long , accuracy ,altitude ,speed ,displacement  @ time</p>')
+    .addTo(map);
+     var popup2 = new mapboxgl.Popup({closeOnClick:true})
+    .setLngLat([85.302992,23.337633])
+    .setHTML('<p> point 2</p>')
+    .addTo(map);
+    var popup3 = new mapboxgl.Popup({closeOnClick:true})
+    .setLngLat([85.307465,23.349769])
+    .setHTML('<p> point 3</p>')
+    .addTo(map);
+   var popup4 = new mapboxgl.Popup({closeOnClick:true})
+    .setLngLat([85.304819,23.329401])
+    .setHTML('<p> point 4</p>')
+    .addTo(map);
+     var popup5 = new mapboxgl.Popup({closeOnClick:true})
+    .setLngLat([85.299386, 23.350199])
+    .setHTML('<p> point 5</p>')
+    .addTo(map);
+        var popup6 = new mapboxgl.Popup({closeOnClick:true})
+    .setLngLat([85.307771,23.349825])
+    .setHTML('<p> point 6</p>')
+    .addTo(map);              
+         var popup7 = new mapboxgl.Popup({closeOnClick:true})
+    .setLngLat([85.304051,23.327793])
+    .setHTML('<p> point 7</p>')
+    .addTo(map);            
+                       
+</script>
+
+</body>
+</html>

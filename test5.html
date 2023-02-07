@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8' />
+  <title></title>
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.18.0/mapbox-gl.js'></script>
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.18.0/mapbox-gl.css' rel='stylesheet' />
+  <style>
+    body { margin:0; padding:0; }
+    .map { position:absolute; top:0; bottom:0; width:100%; }
+    .mapboxgl-popup { z-index:1; }
+    .custom-marker {
+      background-image: url('https://placekitten.com/g/200/200');
+      position:absolute;
+      z-index:1;
+      display:block;
+      border-radius:50%;
+      }
+  </style>
+</head>
+<body>
+
+<div id='map' class='map'></div>
+<script>
+// Coordinates we'll use to center the map and position the custom marker.
+var coordinates = [-74.5, 40]
+mapboxgl.accessToken = 'pk.eyJ1IjoidHJpc3RlbiIsImEiOiJiUzBYOEJzIn0.VyXs9qNWgTfABLzSI3YcrQ';
+var map = new mapboxgl.Map({
+  container: 'map',
+  style: 'mapbox://styles/mapbox/light-v8',
+  center: coordinates,
+  zoom: 9
+});
+var popup = new mapboxgl.Popup({
+    closeButton: false
+});
+map.on('load', function() {
+   
+  // Return the x/y position from coordinates
+  var width = height = 200;
+  var position = map.project(coordinates);
+  // Create a custom marker and add it to the map
+  var marker = document.createElement('div');
+  marker.className = 'custom-marker';
+  marker.style.width = width + 'px';
+  marker.style.height = height + 'px';
+ 
+  // Set the top + left position of the marker
+  // Based on the coordinates and half the size of its shape
+  marker.style.top = position.y - height / 2 + 'px';
+  marker.style.left = position.x - width / 2 + 'px';
+ 
+  // Display a popup when hovering over the marker 
+  marker.addEventListener('mousemove', function(e) {
+    var coordinates = map.unproject([e.x, e.y]);
+    popup.setLngLat(coordinates)
+      .setText('Meow')
+      .addTo(map); 
+  });
+  marker.addEventListener('mouseout', function(e) {
+    popup.remove(); 
+  });
+  // Append the marker to the map. 
+  map.getContainer().appendChild(marker);
+  map.on('move', function() {
+    // Update the x/y coordinates based on the new position of the map.
+    position = map.project(coordinates);
+    marker.style.top = position.y - height / 2 + 'px';
+    marker.style.left = position.x - width / 2 + 'px';
+  });
+});
+</script>
+
+</body>
+</html>
